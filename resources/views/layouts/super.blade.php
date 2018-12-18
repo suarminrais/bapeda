@@ -8,6 +8,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Bapeda</title>
+
+    <!-- Datatables -->
+    <link href="{{asset('vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet">
     
     <!-- Bootstrap -->
     <link href="{{asset('vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -34,13 +44,6 @@
         .min-height{
             min-height: 768px !important;
         }
-        input.form-control {
-            border-radius: 10px;
-        }
-        select.form-control {
-          border-radius: 10px;
-        }
-
     </style>
     @yield('css')
 </head>
@@ -74,43 +77,17 @@
           <div class="menu_section">
             <h3>General</h3>
             <ul class="nav side-menu">
-              <li><a><i class="fa fa-edit"></i> Data Baru <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li><a href="{{route('databaru')}}">Input data</a></li>
-                  {{-- <li><a href="{{route('scan')}}">Scan</a></li> --}}
-                  <li><a href="{{route('arsipdata')}}">Arsip</a></li>
-                </ul>
+              <li><a href="{{ route('super.index') }}"><i class="fa fa-file"></i> Data baru</a></li>
+              <li><a href="{{ route('pecah') }}"><i class="fa fa-pie-chart"></i> Mutasi pemecahan</a>
               </li>
-              <li><a><i class="fa fa-desktop"></i> Mutasi Pemecahan <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li><a href="{{route('pecahbaru')}}">Input Data</a></li>
-                  <li><a href="{{route('pecaharsip')}}">Arsip</a></li>
-                </ul>
+            <li><a href="{{route('super.gabung')}}"><i class="fa fa-th-large"></i> Mutasi penggabungan</a>
+              </li>  
+              <li><a href="{{route('super.balik')}}"><i class="fa fa-arrows-h"></i> Mutasi balik nama</a>
               </li>
-              <li><a><i class="fa fa-table"></i> Mutasi Penggabungan <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li><a href="{{route('gabungbaru')}}">Input Data</a></li>
-                  <li><a href="{{route('gabungarsip')}}">Arsip</a></li>
-                </ul>
-              </li>
-              <li><a><i class="fa fa-arrows-h"></i> Balik Nama<span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li><a href="{{route('baliknama')}}">Input Data</a></li>
-                  <li><a href="{{route('balikarsip')}}">Arsip</a></li>
-                </ul>
-              </li>
-              <li><a><i class="fa fa-pencil-square"></i> Pembetulan<span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li><a href="{{route('pembetulan')}}">Input Data</a></li>
-                  <li><a href="{{route('pembetulanarsip')}}">Arsip</a></li>
-                </ul>
-              </li>
+              <li><a href="{{route('super.betul')}}"><i class="fa fa-pencil-square"></i> Mutasi balik nama</a>
+              </li>                        
             </ul>
           </div>
-          <div class="menu_section">
-        
-          </div>
-
         </div>
         <!-- /sidebar menu -->
       </div>

@@ -74,37 +74,15 @@
           <div class="menu_section">
             <h3>General</h3>
             <ul class="nav side-menu">
-              <li><a><i class="fa fa-edit"></i> Data Baru <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li><a href="{{route('databaru')}}">Input data</a></li>
-                  {{-- <li><a href="{{route('scan')}}">Scan</a></li> --}}
-                  <li><a href="{{route('arsipdata')}}">Arsip</a></li>
-                </ul>
+              <li><a href="{{route('scandb')}}"><i class="fa fa-file"></i> Data baru</a></li>
+              <li><a href="{{route('scanpecah')}}"><i class="fa fa-pie-chart"></i> Mutasi pemecahan</a>
               </li>
-              <li><a><i class="fa fa-desktop"></i> Mutasi Pemecahan <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li><a href="{{route('pecahbaru')}}">Input Data</a></li>
-                  <li><a href="{{route('pecaharsip')}}">Arsip</a></li>
-                </ul>
+              <li><a href="{{route('scangb')}}"><i class="fa fa-th-large"></i> Mutasi penggabungan</a>
+              </li> 
+              <li><a href="{{route('balik')}}"><i class="fa fa-arrows-h"></i> Mutasi balik nama</a>
               </li>
-              <li><a><i class="fa fa-table"></i> Mutasi Penggabungan <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li><a href="{{route('gabungbaru')}}">Input Data</a></li>
-                  <li><a href="{{route('gabungarsip')}}">Arsip</a></li>
-                </ul>
-              </li>
-              <li><a><i class="fa fa-arrows-h"></i> Balik Nama<span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li><a href="{{route('baliknama')}}">Input Data</a></li>
-                  <li><a href="{{route('balikarsip')}}">Arsip</a></li>
-                </ul>
-              </li>
-              <li><a><i class="fa fa-pencil-square"></i> Pembetulan<span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li><a href="{{route('pembetulan')}}">Input Data</a></li>
-                  <li><a href="{{route('pembetulanarsip')}}">Arsip</a></li>
-                </ul>
-              </li>
+              <li><a href="{{route('betul')}}"><i class="fa fa-pencil-square"></i> Mutasi balik nama</a>
+              </li>                     
             </ul>
           </div>
           <div class="menu_section">
