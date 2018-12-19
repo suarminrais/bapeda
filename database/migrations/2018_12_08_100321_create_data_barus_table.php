@@ -24,6 +24,8 @@ class CreateDataBarusTable extends Migration
             $table->string('blok');
             $table->string('nop');
             $table->string('tahunpbb');
+            $table->string('status')->nullable()->default('-'); 
+            $table->string('validasi')->nullable()->default('-');  
             $table->integer('luasbangun')->unsigned()->nullable();
             $table->integer('kelasbangun')->unsigned()->nullable();
             $table->integer('luastanah')->unsigned();

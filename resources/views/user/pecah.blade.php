@@ -38,6 +38,7 @@
                           <th>Kelas</th>
                       </tr>
                       @foreach($data as $d)
+                      @if($d->validasi=='-')
                       <tr>
                           <td>{{$d->id}}</td>
                           <td>{{$d->nop}}</td>
@@ -50,6 +51,7 @@
                           <td>{{$d->kelas_1}}</td>
                           <td><a href="{{ route('scanpch', $d->id) }}" class="btn btn-success">scan</a></td>                         
                       </tr>
+                      @endif
                       @endforeach
                     </table>
                     {{$data->links()}}

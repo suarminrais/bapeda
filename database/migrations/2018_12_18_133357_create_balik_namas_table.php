@@ -22,6 +22,8 @@ class CreateBalikNamasTable extends Migration
             $table->string('tanggalselesai',50);
             $table->string('kecematan',50);
             $table->string('kelurahan',50);
+            $table->string('status')->nullable()->default('-'); 
+            $table->string('validasi')->nullable()->default('-'); 
             $table->string('blok',4);
             $table->integer('luasbangun')->unsigned()->nullable();
             $table->integer('kelasbangun')->unsigned()->nullable();

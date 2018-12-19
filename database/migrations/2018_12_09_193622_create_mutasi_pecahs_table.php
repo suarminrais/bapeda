@@ -21,6 +21,8 @@ class CreateMutasiPecahsTable extends Migration
             $table->string('kecematan',50);
             $table->string('kelurahan',50);
             $table->string('blok',4);
+            $table->string('status')->nullable()->default('-'); 
+            $table->string('validasi')->nullable()->default('-'); 
             $table->integer('jumlah')->unsigned();
             $table->string('nop',50)->unique();
             $table->string('tahunpbb',4);

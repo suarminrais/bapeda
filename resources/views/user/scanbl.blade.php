@@ -48,9 +48,23 @@
 	      <div class="x_content">
 	        <p>Drag beberapa file ke dalam box di bawah untuk multi upload atau klik pilih file.</p>
 	        <br>
-	        <p><strong>Pemohon :  {{ $data->pemohon }}</strong></p>
-	        <p><strong>Nama :  {{ $data->nama }}</strong></p>
-	        <p><strong>NOP :  {{ $data->nop }}</strong></p>
+	        <div class="row">
+	        	<div class="col-md-8 col-sm-8 col-xs-12">
+	        		<p><strong>Pemohon :  {{ $data->pemohon }}</strong></p>
+	        		<p><strong>Nama :  {{ $data->nama }}</strong></p>
+	        		<p><strong>NOP :  {{ $data->nop }}</strong></p>
+		        </div>
+		        <div class="col-md-4 col-sm-4 col-xs-12">
+					<form action="{{route('postStatusBalik', $data->id)}}" method="POST">@method('PUT') @csrf 
+						<div class="form-group">
+				            <label for="status">Status :<span class="required">*</span>
+				            </label>
+				            <input type="text" value="DIKERJAKAN" name="status" required="required" class="form-control col-md-7 col-xs-12">
+				            <input type="submit" class="btn btn-primary col-md-4 col-md-offset-4 col-xs-12">
+				        </div>
+					</form>
+		        </div>	
+	        </div>
 	        <br>
 	        <form method="POST" action="{{route('scanUploadbl',$data->id)}}" enctype="multipart/form-data" class="dropzone" id="my-dropzone">
 	        	@csrf

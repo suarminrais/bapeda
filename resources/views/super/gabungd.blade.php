@@ -1,6 +1,6 @@
 @extends('layouts.super')
 @section('content')
-<div class="">
+<div id="app2" class="">
             
             <div class="clearfix"></div>
             <div class="row">
@@ -6045,19 +6045,20 @@
                             <td>{{$data->kelastanah}}</td>
                             <td>
                               <div class="form-check form-check-inline">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <input v-model='see' type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">Lengkap</label>
                               </div>
                             </td>
                             <td>
                               <div class="form-check form-check-inline">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <input v-model='se' type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">Kurang</label>
                               </div>
                             </td>                            
                           </tr>                                                             
                         </table>    
                         <!-- Button trigger modal -->
+
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                           Berkas
                         </button>
@@ -6107,10 +6108,42 @@
                       </div>                     
                     </div>
                     <hr>
-                    <center><button type="button" class="btn btn-round btn-primary">Kirim</button></center>
+              <form method="POST" action="{{route('gabungvalidasi',$data->id)}}">@method('PUT') @csrf
+                  <div class=" hidden form-group">
+	                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="status">Status :  <span class="required">*</span>
+	                </label>
+	                <div class="col-md-6 col-sm-6 col-xs-12">
+	                  <input type="text" id="status" name="status" required="required" class="form-control col-md-7 col-xs-12" value="DIKERJAKAN">
+	                </div>
+	              </div> 
+	              <hr>
+	              <center>
+	                <button v-if="magic" type="submit" class="btn btn-round btn-primary">Kirim</button>
+	              </center>
+	          </form>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 @stop
+
+@section('js')
+<script src="{{asset('js/vue.js')}}"></script>
+<script>
+  var app = new Vue({
+    el: '#app2',
+    data:{
+      lihat:false,
+      see:false,
+      se:false,
+    },
+    computed:{
+      magic : function(){
+        if(this.see==true) return this.lihat=true
+        if(this.se==true) return this.lihat=true
+      }
+    }
+  })
+</script>
+@stop    

@@ -22,7 +22,7 @@
                 <div class="form-group">
 	              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nama-wp">No. pelayanan</label>
 	              <div class="col-md-6 col-sm-6 col-xs-12">
-	                <input type="text" id="nama-wp" name="nopelayanan" value="<?php echo date('Y')?>.001.001" required="required" class="form-control col-md-7 col-xs-12">
+	                <input type="text" id="nama-wp" name="nopelayanan" value="<?php echo date('Y.dm.H.is')?>" required="required" class="form-control col-md-7 col-xs-12">
 	              </div>                          
 	            </div>
               </tr>

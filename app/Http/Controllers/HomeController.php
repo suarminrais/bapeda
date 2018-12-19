@@ -38,10 +38,17 @@ class HomeController extends Controller
     {
         if (Auth::user()->hasRole('superadministrator'))
             return redirect()->route('super.index');
-        else if (Auth::user()->hasRole('administrator'))
-            return view('admin.home');   
+        else if (Auth::user()->hasRole('administrator')){
+            $data = DataBaru::orderBy('id','desc')->paginate(50);
+            $set = MutasiPecah::orderBy('id','desc')->paginate(50);
+            $let = GabungData::orderBy('id','desc')->paginate(50);
+            $jet = BalikNama::orderBy('id','desc')->paginate(50);
+            $bet = Pembetulan::orderBy('id','desc')->paginate(50);
+
+            return view('admin.home')->withData($data)->withSet($set)->withLet($let)->withJet($jet)->withBet($bet);   
+        }
         else if (Auth::user()->hasRole('user'))
-            return view('user.home');
+            return redirect()->route('scandb');
         else 
             return view('');   
     }
@@ -123,6 +130,72 @@ class HomeController extends Controller
         return view('admin.databaru');
     }
 
+    public function getArsipData()
+    {
+        $data = DataBaru::orderBy('id','desc')->paginate(10);
+        return view('admin.adatabaru')->withData($data);
+    }
+
+    public function getBetulPrint($id)
+    {
+        $data = Pembetulan::find($id);
+        return view('print.dbetul')->withData($data);
+    }
+
+    public function getBetulPrinti($id)
+    {
+        $data = Pembetulan::find($id);
+        return view('print.ibetul')->withData($data);
+    }
+
+    public function getBalikPrint($id)
+    {
+        $data = BalikNama::find($id);
+        return view('print.dbalik')->withData($data);
+    }
+
+    public function getBalikPrinti($id)
+    {
+        $data = BalikNama::find($id);
+        return view('print.ibalik')->withData($data);
+    }
+
+    public function getGabungPrint($id)
+    {
+        $data = GabungData::find($id);
+        return view('print.dgabung')->withData($data);
+    }
+
+    public function getGabungPrinti($id)
+    {
+        $data = GabungData::find($id);
+        return view('print.igabung')->withData($data);
+    }
+
+    public function getPecahPrint($id)
+    {
+        $data = MutasiPecah::find($id);
+        return view('print.dpecah')->withData($data);
+    }
+
+    public function getPecahPrinti($id)
+    {
+        $data = MutasiPecah::find($id);
+        return view('print.ipecah')->withData($data);
+    }
+
+    public function getDataBaruPrint($id)
+    {
+        $data = DataBaru::find($id);
+        return view('print.ddatabaru')->withData($data);
+    }
+
+    public function getDataBaruPrinti($id)
+    {
+        $data = DataBaru::find($id);
+        return view('print.idatabaru')->withData($data);
+    }
+
     public function postDataBaru(Request $request)
     {
         $this->validate($request, array(
@@ -147,12 +220,6 @@ class HomeController extends Controller
         $databaru->save();
 
         return redirect()->route('arsipdata');
-    }
-
-    public function getArsipData()
-    {
-        $data = DataBaru::orderBy('id','desc')->paginate(10);
-        return view('admin.adatabaru')->withData($data);
     }
 
     public function getPecahBaru()
@@ -573,40 +640,4 @@ class HomeController extends Controller
         return view('admin.gabungarsip')->withData($data);
     }
 
-    public function getScan($id)
-    {
-        $data = DataBaru::find($id);
-
-        return view('admin.scan')->withData($data);
-    }
-
-    public function postScan(Request $request, $id)
-    {
-        $files = $request->file('file');
- 
-        if (!is_array($files)) {
-            $files = [$files];
-        }
- 
-        if (!is_dir($this->files_path)) {
-            mkdir($this->files_path, 0777);
-        }
-
-        $new = DataBaru::find($id);
-
-        for ($i = 0; $i < count($files); $i++) {
-            $file = $files[$i];
-            $name = sha1(date('YmdHis') . str_random(30));
-            $save_name = $name . '.' . $file->getClientOriginalExtension();
-            $file->move($this->files_path, $save_name);
-            $upload = new Upload();
-            $upload->filename = $save_name;
-            $upload->data_id = $new->id;
-            $upload->save();
-        }
-
-        return Response::json([
-            'message' => 'Files saved Successfully'
-        ], 200);
-    }
 }

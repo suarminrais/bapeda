@@ -236,4 +236,51 @@ class ScanController extends Controller
             'message' => 'Files saved Successfully'
         ], 200);
     }
+
+    public function postStatus(Request $request, $id)
+    {
+        $data = DataBaru::find($id);
+        $data->status = $request->status;
+        $data->save();
+
+        return redirect()->route('scandb');
+    }
+
+    public function postStatusPecah(Request $request, $id)
+    {
+        $data = MutasiPecah::find($id);
+        $data->status = $request->status;
+        $data->save();
+
+        return redirect()->route('scanpecah');
+    }
+
+    public function postStatusGabung(Request $request, $id)
+    {
+        $data = GabungData::find($id);
+        $data->status = $request->status;
+        $data->save();
+
+        
+        return redirect()->route('scangb');
+    }
+
+    public function postStatusBalik(Request $request, $id)
+    {
+        $data = BalikNama::find($id);
+        $data->status = $request->status;
+        $data->save();
+
+        
+        return redirect()->route('balik');
+    }
+
+    public function postStatusBetul(Request $request, $id)
+    {
+        $data = Pembetulan::find($id);
+        $data->status = $request->status;
+        $data->save();
+
+        return redirect()->route('betul');
+    }
 }

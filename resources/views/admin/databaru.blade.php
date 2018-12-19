@@ -30,7 +30,7 @@
 	            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nopelayanan">No. Pelayanan :  <span class="required">*</span>
 	            </label>
 	            <div class="col-md-6 col-sm-6 col-xs-12">
-	              <input type="text" id="nopelayanan" name="nopelayanan" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo date('Y')?>.001.001">
+	              <input type="text" id="nopelayanan" name="nopelayanan" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo date('Y.dm.H.is')?>">
 	            </div>
 	          </div>
 	          <div class="form-group">

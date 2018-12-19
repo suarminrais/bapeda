@@ -1,0 +1,62 @@
+.main{
+	padding: 10px;
+}
+
+table{
+	width: 100%;
+	border: 1px solid black;
+}
+th{
+	border: 1px solid black;
+	padding: 2.5px;
+}
+
+.no{
+	border: 1px solid black;
+	background-color: #bdbdbd;
+}
+
+.nomor{
+	width: 10px;
+}
+
+.ket{
+	width: 30px;
+}
+
+.nop{
+	width: 200px;
+}
+
+.nama{
+	width: 200px;
+}
+
+.bumi{
+	width: 100px;
+}
+
+.bangunan{
+	width: 100px;
+}
+
+.isi{
+	border-right: 1px solid black;
+	padding-bottom: 50px;
+}
+
+.anu {
+    margin-left: 15%;
+}
+
+.anu1 {
+    margin-left: 18%;
+}
+
+.tanggal{
+    margin-left: 65%;
+}
+
+ol li {
+    font-size: 9pt;
+}

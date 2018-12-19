@@ -27,7 +27,7 @@
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nopelayanan">Nomor Pelayanan :  
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <input type="text" value="<?php echo date('Y').".001.001" ?>" id="nopelayanan" name="nopelayanan" required="required" re class="form-control col-md-7 col-xs-12">
+      <input type="text" value="<?php echo date('Y.dm.H.is') ?>" id="nopelayanan" name="nopelayanan" required="required" re class="form-control col-md-7 col-xs-12">
     </div>
   </div>
   <div class="form-group">

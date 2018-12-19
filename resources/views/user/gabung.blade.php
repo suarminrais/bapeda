@@ -28,6 +28,7 @@
                 <th colspan="2"><center>BUMI</center></th>
                 <th rowspan="2">NOP</th>
                 <th rowspan="2">Nama Alamat</th>
+                <th rowspan="2">Nama Gabungan</th>
                 <th colspan="2"><center>BUMI</center></th>
                 <th rowspan="2">Scan Data</th>                         
             </tr>
@@ -39,6 +40,7 @@
             </tr>
             
             @foreach($data as $d)
+            @if($d->validasi=='-')
             <tr>
                 <td>{{$d->id}}</td>
                 <td>{{$d->nop}}</td>
@@ -46,11 +48,13 @@
                 <td>{{$d->luastanah}}</td>
                 <td>{{$d->kelastanah}}</td>
                 <td>{{$d->nop_1}}</td>
-                <td>{{$d->dagab}}</td>
-                <td>{{$d->alamat_1}}</td>
-                <td>{{$d->kelas_1}}</td>  
+                <td>{{$d->pemohon_1}}</td>
+                <td>{{$d->nagab}}</td>
+                <td>{{$d->kelas_1}}</td>
+                <td></td>  
                 <td><a href="{{ route('scangbs', $d->id) }}" class="btn btn-success">scan</a></td>      
             </tr>
+            @endif
             @endforeach
           </table>
                     {{$data->links()}}

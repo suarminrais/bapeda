@@ -15,7 +15,7 @@ class SuperController extends Controller
 
     public function index()
     {
-        $data = DataBaru::orderBy('id','desc')->paginate(10);
+        $data = DataBaru::where('status','DIKERJAKAN')->orderBy('id','desc')->paginate(10);
 
         return view('super.home')->withData($data);
     }
@@ -27,9 +27,55 @@ class SuperController extends Controller
 
         return view('super.detail')->withData($data)->withFile($file);
     }
+
+    public function putData(Request $request,$id)
+    {
+        $data = DataBaru::find($id);
+        $data->validasi = $request->status;
+        $data->save();
+
+        return redirect()->route('super.index');
+    }
+
+    public function putPecah(Request $request,$id)
+    {
+        $data = MutasiPecah::find($id);
+        $data->validasi = $request->status;
+        $data->save();
+
+        return redirect()->route('pecah');
+    }
+
+    public function putGabung(Request $request,$id)
+    {
+        $data = GabungData::find($id);
+        $data->validasi = $request->status;
+        $data->save();
+
+        return redirect()->route('super.gabung');
+    }
+
+    public function putBalik(Request $request,$id)
+    {
+        $data = BalikNama::find($id);
+        $data->validasi = $request->status;
+        $data->save();
+
+        return redirect()->route('super.balik');
+    }
+
+    public function putBetul(Request $request,$id)
+    {
+        $data = Pembetulan::find($id);
+        $data->validasi = $request->status;
+        $data->save();
+
+        return redirect()->route('super.betul');
+    }
+    
     public function gabung()
     {
-        $data = GabungData::orderBy('id','desc')->paginate(10);
+        $data = GabungData::where('status','DIKERJAKAN')->orderBy('id','desc')->paginate(10);
 
         return view('super.gabung')->withData($data);
     }
@@ -43,7 +89,7 @@ class SuperController extends Controller
     }
     public function pecah()
     {
-        $data = MutasiPecah::orderBy('id','desc')->paginate(10);
+        $data = MutasiPecah::where('status','DIKERJAKAN')->orderBy('id','desc')->paginate(10);
 
         return view('super.pecah')->withData($data);
     }
@@ -58,8 +104,7 @@ class SuperController extends Controller
 
     public function balik()
     {
-        $data = BalikNama::orderBy('id','desc')->paginate(10);
-
+        $data = BalikNama::where('status','DIKERJAKAN')->orderBy('id','desc')->paginate(10);
         return view('super.balik')->withData($data);
     }
 
@@ -73,7 +118,7 @@ class SuperController extends Controller
 
     public function betul()
     {
-        $data = Pembetulan::orderBy('id','desc')->paginate(10);
+        $data = Pembetulan::where('status','DIKERJAKAN')->orderBy('id','desc')->paginate(10);
 
         return view('super.betul')->withData($data);
     }

@@ -19,6 +19,8 @@ class CreatePembetulansTable extends Migration
             $table->string('pemohon',100);
             $table->string('tanggal',50);
             $table->string('kecematan',50);
+            $table->string('status')->nullable()->default('-'); 
+            $table->string('validasi')->nullable()->default('-'); 
             $table->string('alamat',100);
             $table->string('kelurahan',50);
             $table->string('blok',4);

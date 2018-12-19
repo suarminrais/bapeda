@@ -36,6 +36,16 @@ Route::prefix('pelayanan')->middleware('role:administrator')->group(function(){
 	Route::get('/pembetulan', 'HomeController@getPembetulan')->name('pembetulan');
 	Route::post('/pembetulan', 'HomeController@postPembetulan')->name('postpembetulan');
 	Route::get('/pembetulan/arsip', 'HomeController@getPembetulanArsip')->name('pembetulanarsip');
+	Route::get('/databaru/{id}', 'HomeController@getDataBaruPrint')->name('databaruprint');
+	Route::get('/databaru/print/{id}', 'HomeController@getDataBaruPrinti')->name('databaruprinti');
+	Route::get('/pecah/{id}', 'HomeController@getPecahPrint')->name('pecahprint');
+	Route::get('/pecah/print/{id}', 'HomeController@getPecahPrinti')->name('pecahprinti');
+	Route::get('/gabung/{id}', 'HomeController@getGabungPrint')->name('gabungprint');
+	Route::get('/gabung/print/{id}', 'HomeController@getGabungPrinti')->name('gabungprinti');
+	Route::get('/baliknama/{id}', 'HomeController@getBalikPrint')->name('balikprint');
+	Route::get('/baliknama/print/{id}', 'HomeController@getBalikPrinti')->name('balikprinti');
+	Route::get('/pembetulan/{id}', 'HomeController@getBetulPrint')->name('betulprint');
+	Route::get('/pembetulan/print/{id}', 'HomeController@getBetulPrinti')->name('betulprinti');
 });
 
 Route::prefix('super')->middleware('role:superadministrator')->group(function(){
@@ -45,10 +55,15 @@ Route::prefix('super')->middleware('role:superadministrator')->group(function(){
 	Route::get('baliknama/', 'SuperController@balik')->name('super.balik');
 	Route::get('pembetulan/', 'SuperController@betul')->name('super.betul');
 	Route::get('/{id}', 'SuperController@detail')->name('super.detail');
+	Route::put('/{id}', 'SuperController@putData')->name('datavalidasi');
 	Route::get('pecah/{id}', 'SuperController@pecahdetail')->name('pecah.detail');
+	Route::put('pecah/{id}', 'SuperController@putPecah')->name('pecahvalidasi');
 	Route::get('gabung/{id}', 'SuperController@gabungdetail')->name('gabung.detail');
+	Route::put('gabung/{id}', 'SuperController@putGabung')->name('gabungvalidasi');
 	Route::get('baliknama/{id}', 'SuperController@balikdetail')->name('balik.detail');
+	Route::put('baliknama/{id}', 'SuperController@putBalik')->name('balikvalidasi');
 	Route::get('pembetulan/{id}', 'SuperController@betuldetail')->name('betul.detail');
+	Route::put('pembetulan/{id}', 'SuperController@putBetul')->name('betulvalidasi');
 });
 
 Route::prefix('scan')->middleware('role:user')->group(function(){
@@ -67,4 +82,9 @@ Route::prefix('scan')->middleware('role:user')->group(function(){
 	Route::get('pembetulan/', 'ScanController@betul')->name('betul');
 	Route::get('pembetulan/{id}', 'ScanController@getScanbtl')->name('scanbtl');
 	Route::post('pembetulan/{id}', 'ScanController@postScanbtl')->name('scanUploadbtl');
+	Route::put('status/{id}', 'ScanController@postStatus')->name('postStatus');
+	Route::put('statuspecah/{id}', 'ScanController@postStatusPecah')->name('postStatusPecah');
+	Route::put('statusgabung/{id}', 'ScanController@postStatusGabung')->name('postStatusGabung');
+	Route::put('statusbalik/{id}', 'ScanController@postStatusBalik')->name('postStatusBalik');
+	Route::put('statusbetul/{id}', 'ScanController@postStatusBetul')->name('postStatusBetul');
 });

@@ -25,6 +25,7 @@
 
             <tbody>
               @foreach($data as $d)
+              @if($d->validasi=='-')
               <tr>
                 <td>{{ $d->nop }}</td>
                 <td>{{ $d->pemohon }}</td>                         
@@ -32,6 +33,7 @@
                 <td class="text-center"><a href="{{ route('scanbl', $d->id) }}" class="btn btn-success">scan</a>
                 </td>                          
               </tr>
+              @endif
               @endforeach
             </tbody>
           </table>
